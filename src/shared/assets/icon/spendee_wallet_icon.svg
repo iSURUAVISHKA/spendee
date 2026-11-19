@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1254 1254" width="1254" height="1254" role="img" aria-labelledby="title desc">
+  <title id="title">Spendee finance wallet icon</title>
+  <desc id="desc">Flat multicolor gradient wallet with transaction and reminder cards, analytics bars and a golden coin clasp.</desc>
+  <defs>
+    <linearGradient id="backWallet" x1="90" y1="460" x2="925" y2="1050" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f22aa2"/>
+      <stop offset=".39" stop-color="#a32bb7"/>
+      <stop offset=".75" stop-color="#583fc2"/>
+      <stop offset="1" stop-color="#058b9a"/>
+    </linearGradient>
+    <linearGradient id="mainWallet" x1="90" y1="650" x2="1110" y2="1020" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e52ca0"/>
+      <stop offset=".29" stop-color="#a832b9"/>
+      <stop offset=".56" stop-color="#4c4dca"/>
+      <stop offset=".79" stop-color="#187bc1"/>
+      <stop offset="1" stop-color="#02bcae"/>
+    </linearGradient>
+    <linearGradient id="frontCard" x1="290" y1="260" x2="840" y2="552" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f12a99"/>
+      <stop offset=".45" stop-color="#b523ba"/>
+      <stop offset="1" stop-color="#4b35bb"/>
+    </linearGradient>
+    <linearGradient id="rearCard" x1="395" y1="240" x2="965" y2="455" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#087cbc"/>
+      <stop offset=".56" stop-color="#118ab5"/>
+      <stop offset="1" stop-color="#17c6ae"/>
+    </linearGradient>
+    <linearGradient id="inside" x1="165" y1="500" x2="900" y2="540" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#75137b"/>
+      <stop offset=".65" stop-color="#352077"/>
+      <stop offset="1" stop-color="#26146b"/>
+    </linearGradient>
+    <linearGradient id="rim" x1="170" y1="550" x2="1070" y2="560" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f447c9"/>
+      <stop offset=".57" stop-color="#9677f4"/>
+      <stop offset=".8" stop-color="#48c6ef"/>
+      <stop offset="1" stop-color="#18d5c9"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="760" y1="818" x2="1146" y2="827" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffc624"/>
+      <stop offset=".52" stop-color="#ffdf27"/>
+      <stop offset="1" stop-color="#f9e334"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Wallet backing -->
+  <path d="M112 510 C112 426 148 386 215 386 L895 400 C1028 405 1107 483 1107 584 L1107 1016 C1107 1103 1051 1153 962 1153 L259 1153 C168 1153 112 1104 112 1014 Z" fill="url(#backWallet)"/>
+
+  <!-- Rear card with clock -->
+  <path d="M338 274 C346 255 358 248 381 239 L801 112 C853 96 891 100 913 144 C918 155 922 172 927 189 L1028 516 L840 609 L293 463 Z" fill="url(#rearCard)"/>
+  <circle cx="813" cy="246" r="66" fill="none" stroke="#fff" stroke-width="17"/>
+  <path d="M813 216 V247 L841 260" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>
+
+  <!-- Wallet cavity, dark interior -->
+  <path d="M156 473 C154 427 189 405 251 405 L861 452 C963 468 1044 507 1105 550 L1107 650 L150 651 Z" fill="url(#inside)"/>
+
+  <!-- Foreground transaction card -->
+  <path d="M239 322 C245 282 273 264 319 271 L834 347 C882 354 905 383 903 426 L889 521 C877 571 832 594 756 596 L195 594 L215 420 Z" fill="url(#frontCard)"/>
+  <text x="306" y="523" font-family="DejaVu Sans,Arial,sans-serif" font-size="206" font-weight="600" fill="#fff">$</text>
+  <path d="M533 405 L511 534" stroke="#e6a1ef" stroke-width="18" stroke-linecap="round"/>
+  <!-- Notification bell -->
+  <path d="M646 396 C635 396 628 405 627 418 C610 425 600 437 598 458 L593 481 C592 490 581 491 577 502 C573 513 581 524 593 524 L703 531 C719 532 725 516 713 505 C708 500 707 496 707 485 L707 458 C705 440 692 425 679 420 C677 407 667 398 656 398 Z" fill="#ffdf25"/>
+  <path d="M625 529 C625 545 636 555 647 556 C658 556 671 545 671 532 Z" fill="#ffcc17"/>
+  <path d="M718 407 L735 379 M745 439 L777 425" stroke="#ffe52c" stroke-width="23" stroke-linecap="round"/>
+
+  <!-- Front pocket with curved opening -->
+  <path d="M112 525 C116 577 180 599 268 599 L686 599 C732 599 745 590 769 563 C805 521 829 500 892 498 L998 498 C1066 498 1108 544 1108 605 L1108 1017 C1108 1103 1051 1154 960 1154 L259 1154 C169 1154 112 1104 112 1015 Z" fill="url(#mainWallet)"/>
+  <!-- Top lip accent -->
+  <path d="M118 528 C136 578 190 599 268 599 L686 599 C734 599 750 581 777 551 C810 515 846 506 892 506 L995 506 C1042 506 1074 530 1094 562" fill="none" stroke="url(#rim)" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- Sewn border (separate from edge of icon) -->
+  <rect x="166" y="638" width="854" height="439" rx="100" ry="100" fill="none" stroke="#fff" stroke-width="13" stroke-linecap="round" stroke-dasharray="44 43"/>
+
+  <!-- Finance chart -->
+  <rect x="255" y="897" width="65" height="115" rx="22" fill="#fff"/>
+  <rect x="346" y="846" width="63" height="166" rx="22" fill="#fff"/>
+  <rect x="436" y="789" width="62" height="223" rx="22" fill="#fff"/>
+
+  <!-- Gold wallet fastener -->
+  <path d="M873 719 L1116 719 C1130 719 1138 731 1138 745 L1138 913 C1138 929 1127 939 1111 939 L873 939 C811 939 763 892 763 830 C763 767 814 719 873 719 Z" fill="url(#gold)"/>
+  <circle cx="886" cy="827" r="72" fill="none" stroke="#e29a00" stroke-width="17"/>
+  <text x="857" y="875" font-family="DejaVu Sans,Arial,sans-serif" font-size="117" font-weight="600" fill="#db9600">$</text>
+</svg>
