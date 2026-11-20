@@ -3,7 +3,7 @@ import { cn } from '@/shared/utils/cn'
 
 export const Menu = BaseMenu.Root
 
-type MenuTriggerProps = Omit<BaseMenu.Trigger.Props, 'className'> & {
+interface MenuTriggerProps extends Omit<BaseMenu.Trigger.Props, 'className'> {
   className?: string
 }
 
@@ -19,10 +19,12 @@ export const MenuTrigger = ({ className, ...props }: MenuTriggerProps) => {
   )
 }
 
-type MenuPopupProps = Omit<BaseMenu.Popup.Props, 'className'> &
-  Pick<BaseMenu.Positioner.Props, 'side' | 'align' | 'sideOffset' | 'alignOffset'> & {
-    className?: string
-  }
+interface MenuPopupProps
+  extends
+    Omit<BaseMenu.Popup.Props, 'className'>,
+    Pick<BaseMenu.Positioner.Props, 'side' | 'align' | 'sideOffset' | 'alignOffset'> {
+  className?: string
+}
 
 // Wraps Portal and Positioner, so callers only place the popup: <MenuPopup side="top">.
 export const MenuPopup = ({
@@ -44,7 +46,7 @@ export const MenuPopup = ({
       >
         <BaseMenu.Popup
           className={cn(
-            'min-w-32 origin-(--transform-origin) rounded-lg border border-border bg-popover p-1 text-popover-foreground shadow-lg outline-none transition-[scale,opacity] duration-100 ease-out data-ending-style:scale-95 data-ending-style:opacity-0 data-starting-style:scale-95 data-starting-style:opacity-0',
+            'min-w-32 origin-(--transform-origin) rounded-lg border border-border bg-popover p-1 text-foreground shadow-lg outline-none transition-[scale,opacity] duration-100 ease-out data-ending-style:scale-95 data-ending-style:opacity-0 data-starting-style:scale-95 data-starting-style:opacity-0',
             className,
           )}
           {...props}
@@ -54,7 +56,7 @@ export const MenuPopup = ({
   )
 }
 
-type MenuItemProps = Omit<BaseMenu.Item.Props, 'className'> & {
+interface MenuItemProps extends Omit<BaseMenu.Item.Props, 'className'> {
   className?: string
 }
 

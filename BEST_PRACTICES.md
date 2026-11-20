@@ -46,15 +46,17 @@ src/
     │   └── AppLayout/    # app shell: <Sidebar /> + <Outlet />
     ├── widgets/          # larger blocks built from components: Sidebar/Sidebar.tsx
     ├── hooks/
-    └── utils/            # cn, formatCurrency, date helpers
+    ├── constants/        # app-wide constants: categories.ts (category list, color classes)
+    ├── types/            # app-wide types: category.ts (Category interface)
+    └── utils/            # cn, formatCurrency, date helpers, categories.ts (getCategory)
 ```
 
 ### Where does new code go?
 
 1. Wiring for the whole app (store, router, providers): `app/`
 2. A route: a thin page file in its area folder, `pages/<Area>/<Name>Page.tsx`
-3. The components, types and assets of a page area, and anything that knows about transactions, categories or budgets: the matching folder in `modules/`
-4. Anything generic and reusable: `shared/`
+3. The components, types and assets of a page area, and anything that knows about transactions or budgets: the matching folder in `modules/`
+4. Anything generic and reusable: `shared/`. Categories are app-wide, so the `Category` interface (`shared/types/category.ts`), the category list (`shared/constants/categories.ts`) and the name lookup `getCategory()` (`shared/utils/categories.ts`) live here too.
 
 ## Module structure
 

@@ -1,8 +1,23 @@
+import { TransactionsTable, useSampleTransactions } from '@/modules/activity'
+import { Header } from '@/shared/widgets/Header/Header'
+
 export const ActivityPage = () => {
+  const transactions = useSampleTransactions()
+
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-semibold">Activity</h1>
-      <p className="mt-1 text-muted-foreground">Your recent transactions will go here.</p>
-    </div>
+    <>
+      <Header title="Activity" />
+      <div className="pt-4">
+        <TransactionsTable
+          transactions={transactions.data}
+          hasMore={transactions.hasNextPage}
+          isLoading={transactions.isLoading}
+          isFetchingMore={transactions.isFetchingNextPage}
+          isError={transactions.isError}
+          onLoadMore={transactions.fetchNextPage}
+          onRetry={transactions.refetch}
+        />
+      </div>
+    </>
   )
 }

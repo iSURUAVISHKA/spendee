@@ -7,7 +7,7 @@ import BrandLogo from '@/shared/assets/icon/spendee_wallet_icon.svg?react'
 import { loginSchema, type LoginFormValues } from '../../schemas'
 import type { LoginCredentials } from '../../types'
 
-type LoginFormProps = {
+interface LoginFormProps {
   onSubmit: (credentials: LoginCredentials) => void
 }
 

@@ -21,6 +21,7 @@ const textVariants = cva('', {
     },
     color: {
       default: 'text-foreground',
+      strong: 'text-foreground-strong',
       muted: 'text-muted-foreground',
       label: 'text-label-foreground',
       destructive: 'text-destructive',
@@ -35,7 +36,8 @@ const textVariants = cva('', {
 })
 
 // The native `color` attribute is dropped so `color` can be the variant.
-type TextProps = Omit<useRender.ComponentProps<'p'>, 'color'> & VariantProps<typeof textVariants>
+interface TextProps
+  extends Omit<useRender.ComponentProps<'p'>, 'color'>, VariantProps<typeof textVariants> {}
 
 export const Text = ({ render, className, size, weight, color, ...props }: TextProps) => {
   return useRender({

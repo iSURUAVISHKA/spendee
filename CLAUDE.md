@@ -41,7 +41,7 @@ New code follows `BEST_PRACTICES.md`. The rules in `.claude/rules/` (`structure.
 ## UI and styling
 
 - Tailwind CSS v4 through `@tailwindcss/vite`. There is no `tailwind.config`. The theme is defined in `src/index.css` (`@theme inline` maps CSS variables to Tailwind colors and radii).
-- **Dark-only app.** `index.html` sets `class="dark"`, and `:root` in `index.css` holds the only theme values. Design colors are hex values. Tokens marked "Not in the design yet" are leftover shadcn defaults. Custom tokens include `--card-border`, `--primary-border` and `--primary-gradient`.
+- **Dark-only app.** `index.html` sets `class="dark"`, and `:root` in `index.css` holds the only theme values. Design colors are hex values. Tokens marked "Not in the design yet" are leftover shadcn defaults. Custom tokens include `--foreground-strong`, `--link`, `--income` and `--primary-gradient`. Each color value is defined once, so reuse the existing token instead of adding a duplicate.
 - **Components are our own, built on Base UI** (`@base-ui/react`, unstyled and accessible). shadcn/ui is not used. Base UI's docs ship in `node_modules/@base-ui/react/docs/react/` and override anything you remember. Each component has its own PascalCase folder (`src/shared/components/Button/Button.tsx`, `Card/Card.tsx`). Wrap new Base UI primitives with the `add-base-ui` skill.
 - Primary button: `Button`'s `primary` variant, which is also the default, has a 2px gradient outline from the `--primary-gradient` token and fills with the gradient on hover. Add new looks as variants in `Button/buttonVariants.ts`, not as new button components. `size="lg"` is the 48px (14px × 24px padding) size used on the login form.
 - Icons: Hugeicons (`@hugeicons/react` + `@hugeicons/core-free-icons`).

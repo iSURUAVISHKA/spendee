@@ -19,10 +19,10 @@ const spinnerVariants = cva(
   },
 )
 
-type SpinnerProps = Omit<ComponentProps<'output'>, 'children'> &
-  VariantProps<typeof spinnerVariants> & {
-    label?: string
-  }
+interface SpinnerProps
+  extends Omit<ComponentProps<'output'>, 'children'>, VariantProps<typeof spinnerVariants> {
+  label?: string
+}
 
 export const Spinner = ({ label = 'Loading', size, className, ...props }: SpinnerProps) => {
   return (

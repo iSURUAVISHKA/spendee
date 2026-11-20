@@ -9,7 +9,7 @@ import { NavItem } from './components/NavItem/NavItem'
 import { UserDetail } from './components/UserDetail/UserDetail'
 
 const navItems = [
-  { icon: DashboardIcon, name: 'Home', route: '/' },
+  { icon: DashboardIcon, name: 'Dashboard', route: '/' },
   { icon: ActivityIcon, name: 'Activity', route: '/activity' },
   { icon: DocsIcon, name: 'Documents', route: '/documents' },
   { icon: DealsIcon, name: 'Deals', route: '/deals' },

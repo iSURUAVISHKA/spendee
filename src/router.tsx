@@ -1,9 +1,9 @@
 import { Route, Routes } from 'react-router'
 import { ActivityPage } from '@/pages/Activity/ActivityPage'
 import { LoginPage } from '@/pages/Auth/LoginPage'
+import { DashboardPage } from '@/pages/Dashboard/DashboardPage'
 import { DealsPage } from '@/pages/Deals/DealsPage'
 import { DocumentsPage } from '@/pages/Documents/DocumentsPage'
-import { HomePage } from '@/pages/Home/HomePage'
 import { ShoppingListPage } from '@/pages/ShoppingList/ShoppingListPage'
 import { AppLayout } from '@/shared/components/AppLayout/AppLayout'
 
@@ -14,7 +14,7 @@ export const AppRoutes = () => (
 
     {/* Pages inside the app shell (sidebar + content) */}
     <Route path="/" element={<AppLayout />}>
-      <Route index element={<HomePage />} />
+      <Route index element={<DashboardPage />} />
       <Route path="activity" element={<ActivityPage />} />
       <Route path="documents" element={<DocumentsPage />} />
       <Route path="deals" element={<DealsPage />} />

@@ -1,8 +1,12 @@
+import { Header } from '@/shared/widgets/Header/Header'
+
 export const DocumentsPage = () => {
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-semibold">Documents</h1>
-      <p className="mt-1 text-muted-foreground">Your receipts and bills will go here.</p>
-    </div>
+    <>
+      <Header title="Documents" />
+      <div className="pt-4">
+        <p className="text-muted-foreground">Your receipts and bills will go here.</p>
+      </div>
+    </>
   )
 }

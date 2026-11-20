@@ -1,7 +1,7 @@
 import type { ComponentProps } from 'react'
 import { cn } from '@/shared/utils/cn'
 
-type LabelProps = ComponentProps<'label'>
+interface LabelProps extends ComponentProps<'label'> {}
 
 export const Label = ({ className, htmlFor, ...props }: LabelProps) => {
   return (
