@@ -33,6 +33,7 @@
     --color-sidebar-accent: var(--sidebar-accent);
     --color-popover: var(--popover);
     --color-card: var(--card);
+    --color-table-header: var(--table-header);
     --color-link: var(--link);
     --color-category-purple: var(--category-purple);
     --color-category-blue: var(--category-blue);
@@ -67,6 +68,9 @@
 
     /* Cards */
     --card: #0C1017;
+
+    /* Table header row */
+    --table-header: #131924;
 
     /* Subtle surfaces: card borders, badges, meter tracks, icon tiles */
     --muted: #151C26;

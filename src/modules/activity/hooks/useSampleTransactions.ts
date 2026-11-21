@@ -1,35 +1,81 @@
-import { useState } from 'react'
-import { sampleTransactions, transactionsPageSize } from '../constants'
+import type { PaginationData } from '@/shared/components/Pagination/types'
+import type { SortState } from '@/shared/components/Table/types'
+import { sampleTransactions } from '../constants'
+import type { BankStatementStatus, Transaction, TransactionFilters } from '../types'
 
-const fakeDelayMs = 600
+const comparators: Partial<Record<string, (a: Transaction, b: Transaction) => number>> = {
+  date: (a, b) => a.date.localeCompare(b.date),
+  title: (a, b) => a.title.localeCompare(b.title, 'sv'),
+  amount: (a, b) => a.amount - b.amount,
+}
 
-export const useSampleTransactions = () => {
-  const [loadedCount, setLoadedCount] = useState(transactionsPageSize)
-  const [isFetchingNextPage, setIsFetchingNextPage] = useState(false)
+interface UseSampleTransactionsOptions {
+  search: string
+  sort: SortState | null
+  filters: TransactionFilters
+  page: number
+  pageSize: number
+}
 
-  const hasNextPage = loadedCount < sampleTransactions.length
+const matchesSearch = (transaction: Transaction, search: string) => {
+  const query = search.trim().toLowerCase()
 
-  const fetchNextPage = () => {
-    if (isFetchingNextPage || !hasNextPage) return
+  if (!query) return true
 
-    setIsFetchingNextPage(true)
-    setTimeout(() => {
-      setLoadedCount((count) => count + transactionsPageSize)
-      setIsFetchingNextPage(false)
-    }, fakeDelayMs)
-  }
+  return [transaction.title, transaction.description].some((text) =>
+    text.toLowerCase().includes(query),
+  )
+}
 
-  const refetch = () => {
-    setLoadedCount(transactionsPageSize)
+const matches = <Value extends string>(selected: Value[], value: Value) =>
+  selected.length === 0 || selected.includes(value)
+
+const matchesFilters = (transaction: Transaction, filters: TransactionFilters) => {
+  const bankStatement: BankStatementStatus = transaction.bankStatementChecked
+    ? 'checked'
+    : 'unchecked'
+
+  return (
+    matches(filters.category, transaction.category) &&
+    matches(filters.source, transaction.source) &&
+    matches(filters.bankStatement, bankStatement)
+  )
+}
+
+const queryTransactions = ({ search, sort, filters }: UseSampleTransactionsOptions) => {
+  const filtered = sampleTransactions.filter(
+    (transaction) => matchesSearch(transaction, search) && matchesFilters(transaction, filters),
+  )
+
+  if (!sort) return filtered
+
+  const compare = comparators[sort.columnId]
+
+  if (!compare) return filtered
+
+  const direction = sort.direction === 'asc' ? 1 : -1
+
+  return [...filtered].sort((a, b) => compare(a, b) * direction)
+}
+
+export const useSampleTransactions = (options: UseSampleTransactionsOptions) => {
+  const { page, pageSize } = options
+  const results = queryTransactions(options)
+  const lastPage = Math.max(1, Math.ceil(results.length / pageSize))
+  const currentPage = Math.min(page, lastPage)
+  const start = (currentPage - 1) * pageSize
+
+  const pagination: PaginationData = {
+    page: currentPage,
+    pageSize,
+    totalCount: results.length,
   }
 
   return {
-    data: sampleTransactions.slice(0, loadedCount),
-    hasNextPage,
+    data: results.slice(start, start + pageSize),
+    pagination,
     isLoading: false,
-    isFetchingNextPage,
     isError: false,
-    fetchNextPage,
-    refetch,
+    refetch: () => {},
   }
 }

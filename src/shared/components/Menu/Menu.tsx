@@ -1,4 +1,6 @@
 import { Menu as BaseMenu } from '@base-ui/react/menu'
+import { Tick02Icon } from '@hugeicons/core-free-icons'
+import { HugeiconsIcon } from '@hugeicons/react'
 import { cn } from '@/shared/utils/cn'
 
 export const Menu = BaseMenu.Root
@@ -69,5 +71,26 @@ export const MenuItem = ({ className, ...props }: MenuItemProps) => {
       )}
       {...props}
     />
+  )
+}
+
+interface MenuCheckboxItemProps extends Omit<BaseMenu.CheckboxItem.Props, 'className'> {
+  className?: string
+}
+
+export const MenuCheckboxItem = ({ className, children, ...props }: MenuCheckboxItemProps) => {
+  return (
+    <BaseMenu.CheckboxItem
+      className={cn(
+        'grid cursor-pointer grid-cols-[1rem_1fr] items-center gap-2 rounded-md px-2 py-1.5 text-sm outline-none select-none data-disabled:pointer-events-none data-disabled:opacity-50 data-highlighted:bg-accent data-highlighted:text-accent-foreground',
+        className,
+      )}
+      {...props}
+    >
+      <BaseMenu.CheckboxItemIndicator className="col-start-1">
+        <HugeiconsIcon icon={Tick02Icon} className="size-4" aria-hidden />
+      </BaseMenu.CheckboxItemIndicator>
+      <span className="col-start-2">{children}</span>
+    </BaseMenu.CheckboxItem>
   )
 }

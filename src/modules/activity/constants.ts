@@ -1,6 +1,20 @@
-import type { Transaction } from './types'
+import { categories } from '@/shared/constants/categories'
+import type { BankStatementStatus, FilterOption, Transaction, TransactionSource } from './types'
 
 export const transactionsPageSize = 25
+
+export const transactionSources: TransactionSource[] = ['By hand', 'Receipt', 'Bank statement']
+
+export const bankStatementOptions: FilterOption<BankStatementStatus>[] = [
+  { value: 'checked', label: 'Checked' },
+  { value: 'unchecked', label: 'Not checked' },
+]
+
+export const transactionFilterOptions = {
+  category: categories.map(({ name }) => name),
+  source: transactionSources,
+  bankStatement: bankStatementOptions.map(({ value }) => value),
+}
 
 type TransactionTemplate = Omit<Transaction, 'id' | 'date' | 'bankStatementChecked'>
 

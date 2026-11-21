@@ -7,9 +7,7 @@ interface BrandProps {
 
 export const Brand = ({ className }: BrandProps) => {
   return (
-    <div
-      className={cn('flex items-center gap-2 border-b border-border px-2 pb-4', className)}
-    >
+    <div className={cn('flex items-center gap-2 border-b border-border px-2 pb-4', className)}>
       <BrandLogo aria-hidden className="size-8 shrink-0" />
       <span className="text-lg font-semibold">Spendee</span>
     </div>
