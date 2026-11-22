@@ -24,3 +24,5 @@ export interface Transaction {
   currency: string
   bankStatementChecked: boolean
 }
+
+export type TransactionDetails = Pick<Transaction, 'date' | 'title' | 'category' | 'amount'>

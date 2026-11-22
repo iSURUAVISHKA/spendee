@@ -1,3 +1,4 @@
+import dayjs from 'dayjs'
 import { categories } from '@/shared/constants/categories'
 import type { BankStatementStatus, FilterOption, Transaction, TransactionSource } from './types'
 
@@ -9,6 +10,15 @@ export const bankStatementOptions: FilterOption<BankStatementStatus>[] = [
   { value: 'checked', label: 'Checked' },
   { value: 'unchecked', label: 'Not checked' },
 ]
+
+export const categoryOptions: FilterOption<string>[] = categories.map(({ name }) => ({
+  value: name,
+  label: name,
+}))
+
+export const sourceOptions: FilterOption<TransactionSource>[] = transactionSources.map(
+  (source) => ({ value: source, label: source }),
+)
 
 export const transactionFilterOptions = {
   category: categories.map(({ name }) => name),
@@ -118,7 +128,7 @@ const transactionTemplates: TransactionTemplate[] = [
 ]
 
 const toIsoDate = (daysBefore: number) =>
-  new Date(Date.UTC(2026, 10, 9 - daysBefore)).toISOString().slice(0, 10)
+  dayjs('2026-11-09').subtract(daysBefore, 'day').format('YYYY-MM-DD')
 
 export const sampleTransactions: Transaction[] = Array.from({ length: 150 }, (_, index) => ({
   ...transactionTemplates[index % transactionTemplates.length],

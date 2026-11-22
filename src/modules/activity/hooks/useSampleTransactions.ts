@@ -1,7 +1,15 @@
+import { useState } from 'react'
+import type { YearMonth } from '@/shared/components/MonthPicker/types'
+import { toMonthKey } from '@/shared/components/MonthPicker/utils'
 import type { PaginationData } from '@/shared/components/Pagination/types'
 import type { SortState } from '@/shared/components/Table/types'
 import { sampleTransactions } from '../constants'
-import type { BankStatementStatus, Transaction, TransactionFilters } from '../types'
+import type {
+  BankStatementStatus,
+  Transaction,
+  TransactionDetails,
+  TransactionFilters,
+} from '../types'
 
 const comparators: Partial<Record<string, (a: Transaction, b: Transaction) => number>> = {
   date: (a, b) => a.date.localeCompare(b.date),
@@ -13,6 +21,7 @@ interface UseSampleTransactionsOptions {
   search: string
   sort: SortState | null
   filters: TransactionFilters
+  month: YearMonth
   page: number
   pageSize: number
 }
@@ -42,9 +51,16 @@ const matchesFilters = (transaction: Transaction, filters: TransactionFilters) =
   )
 }
 
-const queryTransactions = ({ search, sort, filters }: UseSampleTransactionsOptions) => {
-  const filtered = sampleTransactions.filter(
-    (transaction) => matchesSearch(transaction, search) && matchesFilters(transaction, filters),
+const queryTransactions = (
+  transactions: Transaction[],
+  { search, sort, filters, month }: UseSampleTransactionsOptions,
+) => {
+  const monthKey = toMonthKey(month)
+  const filtered = transactions.filter(
+    (transaction) =>
+      transaction.date.startsWith(monthKey) &&
+      matchesSearch(transaction, search) &&
+      matchesFilters(transaction, filters),
   )
 
   if (!sort) return filtered
@@ -60,7 +76,8 @@ const queryTransactions = ({ search, sort, filters }: UseSampleTransactionsOptio
 
 export const useSampleTransactions = (options: UseSampleTransactionsOptions) => {
   const { page, pageSize } = options
-  const results = queryTransactions(options)
+  const [transactions, setTransactions] = useState(sampleTransactions)
+  const results = queryTransactions(transactions, options)
   const lastPage = Math.max(1, Math.ceil(results.length / pageSize))
   const currentPage = Math.min(page, lastPage)
   const start = (currentPage - 1) * pageSize
@@ -71,11 +88,20 @@ export const useSampleTransactions = (options: UseSampleTransactionsOptions) => 
     totalCount: results.length,
   }
 
+  const updateTransaction = (id: string, details: TransactionDetails) => {
+    setTransactions((current) =>
+      current.map((transaction) =>
+        transaction.id === id ? { ...transaction, ...details } : transaction,
+      ),
+    )
+  }
+
   return {
     data: results.slice(start, start + pageSize),
     pagination,
     isLoading: false,
     isError: false,
     refetch: () => {},
+    updateTransaction,
   }
 }

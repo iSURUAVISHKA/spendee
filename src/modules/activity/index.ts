@@ -1,3 +1,5 @@
+export { ActivityFilters } from './components/ActivityFilters/ActivityFilters'
+export { EditTransactionModal } from './components/EditTransactionModal/EditTransactionModal'
 export { TransactionsTable } from './components/TransactionsTable/TransactionsTable'
 export {
   bankStatementOptions,
@@ -11,6 +13,7 @@ export type {
   BankStatementStatus,
   FilterOption,
   Transaction,
+  TransactionDetails,
   TransactionFilters,
   TransactionSource,
 } from './types'

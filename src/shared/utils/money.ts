@@ -18,3 +18,14 @@ export const formatMoney = (
     maximumFractionDigits: fractionDigits,
   }).format(amountMinor / 100)
 }
+
+export const formatMoneyInput = (amountMinor: number) =>
+  (amountMinor / 100).toFixed(2).replace('.', ',')
+
+export const parseMoney = (value: string) => {
+  const normalized = value.replace(/\s/g, '').replace(',', '.')
+
+  if (!/^\d+(\.\d{1,2})?$/.test(normalized)) return null
+
+  return Math.round(Number(normalized) * 100)
+}

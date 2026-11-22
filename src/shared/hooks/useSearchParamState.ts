@@ -18,13 +18,18 @@ export const useSearchParamState = <T>(
   const stored = searchParams.get(key)
   const value = (stored === null ? null : deserialize(stored)) ?? defaultValue
 
+  const matchesDefault = (nextValue: NonNullable<T>) =>
+    defaultValue !== null &&
+    defaultValue !== undefined &&
+    serialize(nextValue) === serialize(defaultValue)
+
   const setValue = (nextValue: T) => {
     queueSearchParamsUpdate(
       setSearchParams,
       (params) => {
         resetKeys.forEach((resetKey) => params.delete(resetKey))
 
-        if (nextValue === null || nextValue === undefined || Object.is(nextValue, defaultValue)) {
+        if (nextValue === null || nextValue === undefined || matchesDefault(nextValue)) {
           params.delete(key)
           return
         }

@@ -9,7 +9,11 @@ import { formatShortDate } from '@/shared/utils/dates'
 import { formatMoney } from '@/shared/utils/money'
 import type { Transaction } from '../types'
 
-export const useTransactionsTable = () => {
+interface UseTransactionsTableOptions {
+  onEdit: (transaction: Transaction) => void
+}
+
+export const useTransactionsTable = ({ onEdit }: UseTransactionsTableOptions) => {
   const columns: TableColumn<Transaction>[] = [
     {
       id: 'date',
@@ -28,9 +32,16 @@ export const useTransactionsTable = () => {
       sort: true,
       cell: (transaction) => (
         <div className="flex min-w-40 flex-col gap-0.5">
-          <Text size="sm" weight="medium" color="strong">
-            {transaction.title}
-          </Text>
+          <button
+            type="button"
+            aria-label={`Edit ${transaction.title}`}
+            className="cursor-pointer text-left outline-none after:absolute after:inset-0 focus-visible:after:ring-[3px] focus-visible:after:ring-ring/50 focus-visible:after:ring-inset"
+            onClick={() => onEdit(transaction)}
+          >
+            <Text render={<span />} size="sm" weight="medium" color="strong">
+              {transaction.title}
+            </Text>
+          </button>
           <Text size="sm" color="muted">
             {transaction.description}
           </Text>

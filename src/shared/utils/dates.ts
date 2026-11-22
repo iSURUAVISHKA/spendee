@@ -1,17 +1,18 @@
-const shortDateFormat = new Intl.DateTimeFormat('en-GB', {
-  day: 'numeric',
-  month: 'short',
-  timeZone: 'UTC',
-})
+import dayjs from 'dayjs'
 
-const weekdayFormat = new Intl.DateTimeFormat('en-GB', { weekday: 'short', timeZone: 'UTC' })
+export const formatShortDate = (date: string) => dayjs(date).format('D MMM')
 
-const toUtcTime = (date: string) => {
-  const [year, month, day] = date.split('-').map(Number)
+export const formatDate = (date: string) => dayjs(date).format('D MMM YYYY')
 
-  return Date.UTC(year, month - 1, day)
-}
+export const formatWeekday = (date: string) => dayjs(date).format('ddd')
 
-export const formatShortDate = (date: string) => shortDateFormat.format(toUtcTime(date))
+export const formatMonthYear = (year: number, month: number) =>
+  dayjs()
+    .year(year)
+    .month(month - 1)
+    .format('MMMM YYYY')
 
-export const formatWeekday = (date: string) => weekdayFormat.format(toUtcTime(date))
+export const formatShortMonth = (month: number) =>
+  dayjs()
+    .month(month - 1)
+    .format('MMM')

@@ -41,6 +41,7 @@
     --color-category-cyan: var(--category-cyan);
     --color-category-yellow: var(--category-yellow);
     --color-income: var(--income);
+    --color-primary: var(--primary);
     --color-foreground: var(--foreground);
     --color-foreground-strong: var(--foreground-strong);
     --color-background: var(--background);
@@ -89,6 +90,7 @@
 
     --popover: #0E131B;
 
+    --primary: #655BE0;
     --primary-gradient: linear-gradient(90deg, #D72B91 0%, #7941C9 52%, #0B8791 100%);
 
     /* Secondary buttons (Button variant="secondary", IconButton) */
