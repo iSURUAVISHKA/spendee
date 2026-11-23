@@ -25,6 +25,7 @@ const textVariants = cva('', {
       muted: 'text-muted-foreground',
       label: 'text-label-foreground',
       destructive: 'text-destructive',
+      success: 'text-success',
       inherit: '',
     },
   },

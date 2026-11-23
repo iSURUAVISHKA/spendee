@@ -41,6 +41,8 @@
     --color-category-cyan: var(--category-cyan);
     --color-category-yellow: var(--category-yellow);
     --color-income: var(--income);
+    --color-success: var(--success);
+    --color-warning: var(--warning);
     --color-primary: var(--primary);
     --color-foreground: var(--foreground);
     --color-foreground-strong: var(--foreground-strong);
@@ -88,6 +90,12 @@
 
     --income: #73D98B;
 
+    /* Done and complete states */
+    --success: #009C51;
+
+    /* Warnings: things the user should check */
+    --warning: #D49245;
+
     --popover: #0E131B;
 
     --primary: #655BE0;
@@ -99,7 +107,8 @@
     --secondary-hover: #151C29;
     --secondary-hover-border: #202B3F;
 
-    --destructive: #F87171;
+    /* Errors */
+    --destructive: #CB2D36;
 
     --border: #2F3642;
 

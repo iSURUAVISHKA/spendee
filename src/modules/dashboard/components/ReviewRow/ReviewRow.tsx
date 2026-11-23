@@ -1,4 +1,6 @@
-import { BankIcon, File02Icon, ReceiptTextIcon } from '@hugeicons/core-free-icons'
+import { BankIcon, ReceiptTextIcon } from '@hugeicons/core-free-icons'
+import { HugeiconsIcon } from '@hugeicons/react'
+import DocsIcon from '@/shared/assets/icon/Docs.svg?react'
 import { Button } from '@/shared/components/Button/Button'
 import { Text } from '@/shared/components/Text/Text'
 import { cn } from '@/shared/utils/cn'
@@ -6,9 +8,9 @@ import type { ReviewItem, ReviewKind } from '../../types'
 import { RoundIcon } from '../RoundIcon/RoundIcon'
 
 const kindStyle = {
-  receipt: { icon: ReceiptTextIcon, tone: 'blue' },
-  flyer: { icon: File02Icon, tone: 'gray' },
-  statement: { icon: BankIcon, tone: 'yellow' },
+  receipt: { icon: <HugeiconsIcon icon={ReceiptTextIcon} />, tone: 'blue' },
+  flyer: { icon: <DocsIcon />, tone: 'gray' },
+  statement: { icon: <HugeiconsIcon icon={BankIcon} />, tone: 'yellow' },
 } as const satisfies Record<ReviewKind, object>
 
 interface ReviewRowProps {

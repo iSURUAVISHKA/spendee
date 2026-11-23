@@ -1,4 +1,5 @@
 import { SparklesIcon } from '@hugeicons/core-free-icons'
+import { HugeiconsIcon } from '@hugeicons/react'
 import { Button } from '@/shared/components/Button/Button'
 import { Card } from '@/shared/components/Card/Card'
 import { Text } from '@/shared/components/Text/Text'
@@ -27,7 +28,7 @@ export const TipOfTheWeek = ({
   return (
     <Card className={cn('flex flex-col gap-4', className)}>
       <div className="flex items-center gap-3">
-        <RoundIcon icon={SparklesIcon} tone="blue" />
+        <RoundIcon icon={<HugeiconsIcon icon={SparklesIcon} />} tone="blue" />
         <Text render={<h2 />} size="xl" weight="semibold" color="strong">
           {title}
         </Text>
