@@ -21,7 +21,7 @@ export const DocumentUploadCard = ({
   className,
 }: DocumentUploadCardProps) => {
   return (
-    <Card className={cn('flex flex-col gap-5', className)}>
+    <Card className={cn('gap-5 lg:gap-4', className)}>
       <div className="flex flex-col gap-1">
         <Text render={<h2 />} size="xl" weight="semibold" color="strong">
           Upload a document
@@ -33,6 +33,7 @@ export const DocumentUploadCard = ({
       <FileUpload
         upload={upload}
         hint={documentUploadHint}
+        className="lg:min-h-0 lg:flex-1 lg:gap-2 lg:p-4"
         onFileSelected={onFileSelected}
         onCancel={onCancel}
         onRetry={upload?.canRetry ? onRetry : undefined}

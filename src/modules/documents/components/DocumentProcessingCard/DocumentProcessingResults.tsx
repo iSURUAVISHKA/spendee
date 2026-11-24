@@ -19,7 +19,7 @@ const getSummary = (checks: ProcessingCheck[]) => {
 
 export const DocumentProcessingResults = ({ fileName, checks }: DocumentProcessingResultsProps) => {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex min-h-0 flex-1 flex-col gap-4">
       <div role="status" className="flex min-w-0 flex-col gap-0.5">
         <Text weight="medium" color="strong" className="truncate" title={fileName}>
           {fileName}
@@ -28,7 +28,11 @@ export const DocumentProcessingResults = ({ fileName, checks }: DocumentProcessi
           {getSummary(checks)}
         </Text>
       </div>
-      <ul aria-label="Checks" className="flex flex-col gap-3">
+      <ul
+        aria-label="Checks"
+        tabIndex={0}
+        className="flex min-h-0 flex-col gap-3 overflow-y-auto rounded-sm outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50"
+      >
         {checks.map((check) => (
           <DocumentProcessingCheck key={check.id} check={check} />
         ))}

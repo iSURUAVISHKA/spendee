@@ -26,7 +26,7 @@ export const TipOfTheWeek = ({
   className,
 }: TipOfTheWeekProps) => {
   return (
-    <Card className={cn('flex flex-col gap-4', className)}>
+    <Card className={cn('gap-4', className)}>
       <div className="flex items-center gap-3">
         <RoundIcon icon={<HugeiconsIcon icon={SparklesIcon} />} tone="blue" />
         <Text render={<h2 />} size="xl" weight="semibold" color="strong">

@@ -21,7 +21,7 @@ export const RecentActivity = ({
   className,
 }: RecentActivityProps) => {
   return (
-    <Card className={cn('flex flex-col gap-5', className)}>
+    <Card className={cn('gap-5', className)}>
       <SectionHeader title={title} actionLabel={actionLabel} actionHref={actionHref} />
       {items.length > 0 ? (
         <ul className="flex flex-col gap-3">

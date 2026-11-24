@@ -28,7 +28,7 @@ export const SpendingByCategory = ({
   const max = Math.max(1, ...categories.map((category) => category.amount))
 
   return (
-    <Card className={cn('flex flex-col gap-5', className)}>
+    <Card className={cn('gap-5', className)}>
       <SectionHeader title={title} actionLabel={actionLabel} onAction={onAction} />
       {categories.length > 0 ? (
         <ul className="grid grid-cols-[1fr_auto] gap-x-8 gap-y-4 sm:grid-cols-[auto_1fr_auto]">

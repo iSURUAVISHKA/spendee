@@ -9,7 +9,7 @@ interface DocumentProcessingErrorProps {
 
 export const DocumentProcessingError = ({ fileName, onRetry }: DocumentProcessingErrorProps) => {
   return (
-    <div className="flex flex-1 flex-col items-center justify-center gap-4 py-8 text-center">
+    <div className="flex flex-1 flex-col items-center justify-center gap-4 py-8 text-center lg:py-0">
       <span className="flex size-12 items-center justify-center rounded-full bg-destructive/15 [&>svg]:size-6">
         <ErrorIcon aria-hidden />
       </span>

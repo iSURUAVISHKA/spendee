@@ -21,7 +21,7 @@ export const DealsForYou = ({
   className,
 }: DealsForYouProps) => {
   return (
-    <Card className={cn('flex flex-col gap-5', className)}>
+    <Card className={cn('gap-5', className)}>
       <SectionHeader title={title} actionLabel={actionLabel} actionHref={actionHref} />
       {deals.length > 0 ? (
         <ul className="flex flex-col divide-y divide-muted">

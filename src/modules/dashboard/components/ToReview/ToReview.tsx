@@ -14,7 +14,7 @@ interface ToReviewProps {
 
 export const ToReview = ({ title, items, onItemAction, className }: ToReviewProps) => {
   return (
-    <Card className={cn('flex flex-col gap-5', className)}>
+    <Card className={cn('gap-5', className)}>
       <SectionHeader title={title} />
       {items.length > 0 ? (
         <ul className="flex flex-col gap-4">

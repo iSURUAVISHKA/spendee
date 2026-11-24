@@ -7,7 +7,7 @@ interface DocumentProcessingLoadingProps {
 
 export const DocumentProcessingLoading = ({ fileName }: DocumentProcessingLoadingProps) => {
   return (
-    <div className="flex flex-1 flex-col items-center justify-center gap-4 py-8 text-center">
+    <div className="flex flex-1 flex-col items-center justify-center gap-4 py-8 text-center lg:py-0">
       <Spinner size="lg" label={`Processing ${fileName}`} className="text-primary" />
       <div className="flex w-full flex-col items-center gap-1">
         <Text weight="medium" color="strong" className="max-w-full truncate" title={fileName}>

@@ -1,4 +1,7 @@
 import type { ReactNode } from 'react'
+import { Link } from 'react-router'
+import BackIcon from '@/shared/assets/icon/Back.svg?react'
+import { buttonVariants } from '@/shared/components/Button/buttonVariants'
 import { SearchInput } from '@/shared/components/SearchInput/SearchInput'
 import { Text } from '@/shared/components/Text/Text'
 import { useDebouncedCallback } from '@/shared/hooks/useDebouncedCallback'
@@ -7,25 +10,37 @@ import { cn } from '@/shared/utils/cn'
 
 interface HeaderProps {
   title: string
+  backTo?: string
   actions?: ReactNode
   withSearch?: boolean
   className?: string
 }
 
-export const Header = ({ title, actions, withSearch = false, className }: HeaderProps) => {
+export const Header = ({ title, backTo, actions, withSearch = false, className }: HeaderProps) => {
   const [search, setSearch] = useSearchParam()
   const debouncedSetSearch = useDebouncedCallback(setSearch, 300)
 
   return (
     <header
       className={cn(
-        'box-content grid min-h-9 grid-cols-[minmax(0,1fr)_auto] items-center gap-x-4 gap-y-3 border-b border-border pb-3 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]',
+        'sticky top-0 z-20 box-content grid min-h-9 grid-cols-[minmax(0,1fr)_auto] items-center gap-x-4 gap-y-3 border-b border-border bg-background pt-4 pb-3 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]',
         className,
       )}
     >
-      <Text render={<h1 />} size="xl" weight="semibold" className="min-w-0 truncate">
-        {title}
-      </Text>
+      <div className="flex min-w-0 items-center gap-3">
+        {backTo && (
+          <Link
+            to={backTo}
+            aria-label="Back"
+            className={buttonVariants({ variant: 'secondary', size: 'icon' })}
+          >
+            <BackIcon aria-hidden />
+          </Link>
+        )}
+        <Text render={<h1 />} size="xl" weight="semibold" className="min-w-0 truncate">
+          {title}
+        </Text>
+      </div>
       {withSearch && (
         <SearchInput
           placeholder="Search"

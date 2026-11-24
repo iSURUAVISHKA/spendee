@@ -10,7 +10,7 @@ interface SummaryCardProps {
 
 export const SummaryCard = ({ title, value, className }: SummaryCardProps) => {
   return (
-    <Card className={cn('flex flex-col gap-2', className)}>
+    <Card className={cn('gap-2', className)}>
       <Text render={<dt />} size="sm" color="muted">
         {title}
       </Text>

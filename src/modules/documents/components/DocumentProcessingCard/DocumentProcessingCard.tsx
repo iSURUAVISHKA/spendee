@@ -19,7 +19,7 @@ export const DocumentProcessingCard = ({
   className,
 }: DocumentProcessingCardProps) => {
   return (
-    <Card className={cn('flex flex-col gap-5', className)}>
+    <Card className={cn('gap-5 lg:gap-4', className)}>
       <div className="flex flex-col gap-1">
         <Text render={<h2 />} size="xl" weight="semibold" color="strong">
           Document check
@@ -28,10 +28,10 @@ export const DocumentProcessingCard = ({
           AI reads your document and checks the details.
         </Text>
       </div>
-      <div className="flex flex-1 flex-col">
+      <div className="flex min-h-0 flex-1 flex-col">
         {!processing && (
           <NoData
-            className="flex-1"
+            className="flex-1 lg:py-0"
             title="Nothing to check yet"
             description="Upload a receipt or a bill to start."
           />

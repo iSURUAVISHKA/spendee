@@ -6,7 +6,10 @@ interface CardProps extends ComponentProps<'div'> {}
 export const Card = ({ className, ...props }: CardProps) => {
   return (
     <div
-      className={cn('rounded-md border border-muted bg-card p-6 text-foreground', className)}
+      className={cn(
+        'flex flex-col rounded-md border border-muted bg-card p-6 text-foreground',
+        className,
+      )}
       {...props}
     />
   )
