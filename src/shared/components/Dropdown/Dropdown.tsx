@@ -20,6 +20,10 @@ export const Dropdown = <Value extends string>({
   const [uncontrolledValue, setUncontrolledValue] = useState(defaultValue)
   const selected = value ?? uncontrolledValue
   const count = selected.length
+  const selectedLabel = multiple
+    ? undefined
+    : options.find((option) => option.value === selected[0])?.label
+  const triggerLabel = selectedLabel ? `${name}: ${selectedLabel}` : name
 
   const handleValueChange = (nextValue: Value[] | Value | null) => {
     const nextSelected = toValueArray(nextValue)
@@ -35,11 +39,11 @@ export const Dropdown = <Value extends string>({
       onValueChange={handleValueChange}
     >
       <BaseSelect.Trigger
-        aria-label={count > 0 ? `${name}, ${count} selected` : name}
+        aria-label={multiple && count > 0 ? `${name}, ${count} selected` : triggerLabel}
         className={cn(buttonVariants({ variant: 'secondary' }), 'group', className)}
       >
-        {name}
-        {count > 0 && (
+        {triggerLabel}
+        {multiple && count > 0 && (
           <span className="inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-muted px-1.5 text-xs tabular-nums">
             {count}
           </span>

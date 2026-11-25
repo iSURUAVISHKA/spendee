@@ -2,11 +2,9 @@ import type { ReactNode } from 'react'
 import { Link } from 'react-router'
 import BackIcon from '@/shared/assets/icon/Back.svg?react'
 import { buttonVariants } from '@/shared/components/Button/buttonVariants'
-import { SearchInput } from '@/shared/components/SearchInput/SearchInput'
 import { Text } from '@/shared/components/Text/Text'
-import { useDebouncedCallback } from '@/shared/hooks/useDebouncedCallback'
-import { useSearchParam } from '@/shared/hooks/useSearchParam'
 import { cn } from '@/shared/utils/cn'
+import { SearchParamInput } from '@/shared/widgets/SearchParamInput/SearchParamInput'
 
 interface HeaderProps {
   title: string
@@ -17,9 +15,6 @@ interface HeaderProps {
 }
 
 export const Header = ({ title, backTo, actions, withSearch = false, className }: HeaderProps) => {
-  const [search, setSearch] = useSearchParam()
-  const debouncedSetSearch = useDebouncedCallback(setSearch, 300)
-
   return (
     <header
       className={cn(
@@ -42,11 +37,8 @@ export const Header = ({ title, backTo, actions, withSearch = false, className }
         </Text>
       </div>
       {withSearch && (
-        <SearchInput
+        <SearchParamInput
           placeholder="Search"
-          defaultValue={search}
-          onValueChange={(value) => debouncedSetSearch(value)}
-          onClear={() => debouncedSetSearch('')}
           className="col-span-2 lg:col-span-1 lg:col-start-2 lg:row-start-1 lg:w-80"
         />
       )}

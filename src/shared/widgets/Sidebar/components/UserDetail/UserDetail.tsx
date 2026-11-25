@@ -1,3 +1,4 @@
+import { Avatar } from '@/shared/components/Avatar/Avatar'
 import { Menu, MenuItem, MenuPopup, MenuTrigger } from '@/shared/components/Menu/Menu'
 import { cn } from '@/shared/utils/cn'
 
@@ -19,12 +20,7 @@ export const UserDetail = ({ firstName, lastName, onLogout, className }: UserDet
           className,
         )}
       >
-        <span
-          aria-hidden
-          className="flex size-8 shrink-0 items-center justify-center rounded-full bg-avatar text-xs font-semibold text-foreground-strong"
-        >
-          {initials}
-        </span>
+        <Avatar aria-hidden>{initials}</Avatar>
         <span className="truncate">
           {firstName} {lastName}
         </span>

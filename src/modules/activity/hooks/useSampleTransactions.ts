@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import type { YearMonth } from '@/shared/components/MonthPicker/types'
 import { toMonthKey } from '@/shared/components/MonthPicker/utils'
-import type { PaginationData } from '@/shared/components/Pagination/types'
 import type { SortState } from '@/shared/components/Table/types'
+import { paginate } from '@/shared/utils/paginate'
 import { sampleTransactions } from '../constants'
 import type {
   BankStatementStatus,
@@ -78,15 +78,7 @@ export const useSampleTransactions = (options: UseSampleTransactionsOptions) => 
   const { page, pageSize } = options
   const [transactions, setTransactions] = useState(sampleTransactions)
   const results = queryTransactions(transactions, options)
-  const lastPage = Math.max(1, Math.ceil(results.length / pageSize))
-  const currentPage = Math.min(page, lastPage)
-  const start = (currentPage - 1) * pageSize
-
-  const pagination: PaginationData = {
-    page: currentPage,
-    pageSize,
-    totalCount: results.length,
-  }
+  const { data, pagination } = paginate(results, page, pageSize)
 
   const updateTransaction = (id: string, details: TransactionDetails) => {
     setTransactions((current) =>
@@ -97,7 +89,7 @@ export const useSampleTransactions = (options: UseSampleTransactionsOptions) => 
   }
 
   return {
-    data: results.slice(start, start + pageSize),
+    data,
     pagination,
     isLoading: false,
     isError: false,

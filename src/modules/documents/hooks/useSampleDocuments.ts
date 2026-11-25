@@ -1,4 +1,4 @@
-import type { PaginationData } from '@/shared/components/Pagination/types'
+import { paginate } from '@/shared/utils/paginate'
 import { sampleDocuments } from '../constants'
 import type { DocumentFilterValues, UploadedDocument } from '../types'
 
@@ -16,18 +16,10 @@ const matchesFilters = (doc: UploadedDocument, filters: DocumentFilterValues) =>
 
 export const useSampleDocuments = ({ filters, page, pageSize }: UseSampleDocumentsOptions) => {
   const results = sampleDocuments.filter((doc) => matchesFilters(doc, filters))
-  const lastPage = Math.max(1, Math.ceil(results.length / pageSize))
-  const currentPage = Math.min(page, lastPage)
-  const start = (currentPage - 1) * pageSize
-
-  const pagination: PaginationData = {
-    page: currentPage,
-    pageSize,
-    totalCount: results.length,
-  }
+  const { data, pagination } = paginate(results, page, pageSize)
 
   return {
-    data: results.slice(start, start + pageSize),
+    data,
     pagination,
     isLoading: false,
     isError: false,
