@@ -8,6 +8,7 @@ export interface Deal {
   description: string
   memberPrice: boolean
   price: number
+  originalPrice: number
   currency: string
   unitPrice: number
   unit: string

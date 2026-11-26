@@ -9,6 +9,7 @@ export const buttonVariants = cva(
         primary:
           'relative isolate border-0 bg-transparent font-semibold text-foreground-strong before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:bg-(image:--primary-gradient) before:p-0.5 before:[mask:linear-gradient(#fff_0_0)_content-box_exclude,linear-gradient(#fff_0_0)] after:pointer-events-none after:absolute after:inset-0 after:-z-10 after:rounded-[inherit] after:bg-(image:--primary-gradient) after:opacity-0 after:transition-opacity after:duration-300 hover:after:opacity-100',
         solid: 'bg-primary font-semibold text-foreground-strong hover:bg-primary/90',
+        destructive: 'bg-destructive font-semibold text-foreground-strong hover:bg-destructive/90',
         secondary:
           'rounded-[4px] border-secondary-border bg-secondary text-foreground-strong hover:border-secondary-hover-border hover:bg-secondary-hover',
         link: 'text-link underline-offset-4 hover:underline',
